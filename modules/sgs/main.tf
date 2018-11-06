@@ -48,6 +48,19 @@ resource "aws_security_group" "core_security_group" {
   }
 }
 
+resource "aws_security_group" "service_access_security_group" {
+  name                   = "${var.cluster_name}-${terraform.env}-core"
+  vpc_id                 = "${data.aws_subnet.subnet.vpc_id}"
+  revoke_rules_on_delete = "true"
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
 resource "aws_security_group_rule" "sns_source_addresses" {
   type              = "ingress"
   from_port         = 8443

@@ -47,6 +47,7 @@ resource "aws_emr_cluster" "cluster" {
     subnet_id                         = "${var.subnet_id}"
     emr_managed_master_security_group = "${var.master_security_group}"
     emr_managed_slave_security_group  = "${var.core_security_group}"
+    service_access_security_group     = "${var.service_access_security_group}"
     instance_profile                  = "${var.instance_profile}"
     key_name                          = "${var.ssh_key_name}"
   }

@@ -13,6 +13,7 @@ variable "root_volume_size" {}
 variable "subnet_id" {}
 variable "master_security_group" {}
 variable "core_security_group" {}
+variable "service_access_security_group" {}
 variable "instance_profile" {}
 variable "autoscaling_role" {}
 variable "master_instance_type" {}

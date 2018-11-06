@@ -5,6 +5,7 @@ variable "region" {
 
 variable "sns_source_addresses" {
   type = "list"
+
   default = [
     "207.171.167.101/32",
     "207.171.167.25/32",
@@ -18,8 +19,9 @@ variable "sns_source_addresses" {
     "72.21.196.64/29",
     "72.21.198.64/29",
     "72.21.198.72/32",
-    "72.21.217.0/24"
+    "72.21.217.0/24",
   ]
+
   description = "Note: These change from region-to-region. See README for details."
 }
 
@@ -71,6 +73,11 @@ variable "cluster_name" {
 
 variable "vpc_id" {
   description = "The VPC in which to create the EMR cluster, subnet IDs will be inferred. See Security Module in README"
+}
+
+variable "subnet_ids" {
+  type        = "list"
+  description = "Subnets in the VPC - All must be in different AZs"
 }
 
 variable "applications" {
