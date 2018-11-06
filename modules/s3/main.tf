@@ -1,6 +1,7 @@
 resource "aws_s3_bucket" "s3_logs_bucket" {
   bucket = "${var.cluster_name}-${var.region}-${terraform.env}-s3logs"
   acl    = "log-delivery-write"
+  force_destroy = true
 
   versioning {
     enabled = true
@@ -18,6 +19,7 @@ resource "aws_s3_bucket" "s3_logs_bucket" {
 resource "aws_s3_bucket" "bucket" {
   bucket = "${var.cluster_name}-${var.region}-${terraform.env}"
   acl    = "private"
+  force_destroy = true
 
   logging {
     target_bucket = "${aws_s3_bucket.s3_logs_bucket.id}"
