@@ -95,7 +95,7 @@ resource "aws_emr_cluster" "cluster" {
 
 data "aws_instance" "master" {
   filter {
-    name   = "dns-name"
-    values = ["${aws_emr_cluster.cluster.master_public_dns}"]
+    name   = "instance.group-id"
+    values = ["${var.master_security_group}"]
   }
 }
