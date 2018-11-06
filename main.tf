@@ -36,6 +36,7 @@ module "bootstrap" {
 module "emr" {
   source = "./modules/emr"
 
+  applications               = "${var.applications}"
   cluster_name               = "${var.cluster_name}"
   certs_s3_object            = "${module.bootstrap.certs_s3_object}"
   kms_key_id                 = "${module.sec.iam_kms_key_id}"

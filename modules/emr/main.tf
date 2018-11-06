@@ -35,7 +35,7 @@ data "template_file" "autoscaling_policy" {
 resource "aws_emr_cluster" "cluster" {
   name          = "${var.cluster_name}-${terraform.env}"
   release_label = "${var.release}"
-  applications  = ["Spark", "Zeppelin", "Hadoop", "Ganglia"]
+  applications  = "${var.applications}"
   log_uri       = "s3n://${var.s3_bucket}/logs/"
 
   termination_protection            = false

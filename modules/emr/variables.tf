@@ -1,3 +1,9 @@
+variable "applications" {
+  type        = "list"
+  default     = ["Spark", "Zeppelin", "Hadoop", "Ganglia"]
+  description = "Applications to install on EMR"
+}
+
 variable "cluster_name" {}
 variable "certs_s3_object" {}
 variable "kms_key_id" {}
