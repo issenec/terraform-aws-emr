@@ -1,4 +1,6 @@
 # Spark on Amazon EMR + Terraform 
+#### Code taken from [collectivehealth/terraform-emr-spark-example](https://github.com/collectivehealth/terraform-emr-spark-example)
+
 An example Terraform project that will configure a Secure and Customizable 
 Spark Cluster on Amazon EMR (EMR).  Zeppelin is also installed as an interface
 to Spark, and Ganglia is also installed for monitoring.
@@ -201,7 +203,7 @@ $> terraform apply -var 'vpc_id=vpc-abcde123' -var 'cluster_name=my_emr_cluster_
 
 ### I want this to run in another region, what do I do?
 
-Currently this project is hard-coded to run in AWS US-West-2 (Oregon), and
+Currently this project is hard-coded to run in AWS US-East-1 (Northern Virginia), and
 there are two things you have to change to make it run in another region:
  - [Default Region](variables.tf#L4)
    - Change this to match the name of the region you'd like to use
@@ -219,10 +221,10 @@ $> terraform apply...
 ...
 Outputs:
 
-dns_name = my_emr_cluster_1-default-1234567890.us-west-2.elb.amazonaws.com
+dns_name = my_emr_cluster_1-default-1234567890.us-east-1.elb.amazonaws.com
 ```
 
-You can navigate to `https://my_emr_cluster_1-default-1234567890.us-west-2.elb.amazonaws.com` 
+You can navigate to `https://my_emr_cluster_1-default-1234567890.us-east-1.elb.amazonaws.com` 
 in your browser.  You will have to ignore the certificate warning, since this
 example project creates self-signed SSL certs for demonstrative purposes.
 
@@ -246,7 +248,7 @@ folder, so you can SSH into the cluster with the following command:
 $> ssh -i generated/ssh/my_emr_cluster_1-default ip_address_of_a_node
 ```
 
-AWS also provides additional SSH connection help in the [EMR Console](https://us-west-2.console.aws.amazon.com/elasticmapreduce/home)
+AWS also provides additional SSH connection help in the [EMR Console](https://us-east-1.console.aws.amazon.com/elasticmapreduce/home)
 
 ### The Terraform state file is saved locally, how do I share that with others?
 
@@ -254,9 +256,9 @@ It is recommended to use [Terraform Remote State](https://www.terraform.io/docs/
 
 ### The cluster failed to create, where do I find logs?
 
- - First, navigate to [EMR Console](https://us-west-2.console.aws.amazon.com/elasticmapreduce/home)
+ - First, navigate to [EMR Console](https://us-east-1.console.aws.amazon.com/elasticmapreduce/home)
  - Locate your cluster, it should be named after your `cluster_name` and `region`, 
-   e.g. `my_emr_cluster1-us-west-2`
+   e.g. `my_emr_cluster1-us-east-1`
  - Second, there are logs in the S3 bucket created, under `logs/`
    - There's a shortcut in the UI to find the log directory, click on the the
      folder icon near `Log URI:`

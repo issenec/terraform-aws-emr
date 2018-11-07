@@ -1,6 +1,6 @@
 [users]
-admin = password1, admin
-user1 = user1, users
+admin = 1234qwerQWERadmin1, admin
+user1 = 1234qwerQWERuser1, users
 
 [main]
 sessionManager = org.apache.shiro.web.session.mgt.DefaultWebSessionManager
